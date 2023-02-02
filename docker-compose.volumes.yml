@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  local-apache:
+    volumes:
+      # - ${HOME}/.composer:/.composer
+      - ./apache/php.ini:/etc/php.ini
+      - ./apache/www.conf:/etc/php-fpm.d/www.conf
+      - ./apache/httpd.conf:/etc/httpd/conf/httpd.conf
+      - ./www/html:/var/www/html
+      - ./apache/docker.virtual_host.conf:/etc/httpd/conf.d/docker.virtual_host.conf
+      # - ./apache/etc/apache2/conf/pagespeed_localhost_ssl.conf:/etc/httpd/conf.d/pagespeed_localhost_ssl.conf
+      - ${SSH_AUTH_SOCK}:/ssh-agent
+
+  local-postgresql:
+    volumes:
+      - ./postgresql/psql-entrypoint-scripts:/docker-entrypoint-initdb.d:rw
+      - local_volume_db14:/var/lib/postgresql/data
+      - ./postgresql/data:/data
+
+  local-mysql:
+    volumes:
+      - local_mysql_db8032:/var/lib/mysql
+volumes:
+  local_volume_db14:
+  local_mysql_db8032:

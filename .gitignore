@@ -1,0 +1,5 @@
+www/
+.idea
+.env
+docker-compose-override.yml
+postgresql/data/

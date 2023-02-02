@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  local-apache:
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "9000"
+      - "9003"
+    networks:
+      local_net:
+
+  local-memcached:
+    ports:
+     - "11211:11211"
+    networks:
+      local_net:
+
+  local-postgresql:
+    ports:
+      - "5445:5432"
+
+    networks:
+      local_net:
+
+  local-redis:
+    ports:
+      - "6379:6379"
+
+    networks:
+      local_net:
+  
+  local-mysql:
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    networks:
+      local_net:
+
+networks:
+  local_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.52.0/24

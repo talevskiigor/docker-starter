@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  local-apache:
+    build: 
+      dockerfile: Dockerfile
+      context: ./apache
+      args:
+        HOST_UID: ${USER_ID:-1000}
+        PHP_VERSION: ${PHP_VERSION}
+  
+  
