@@ -1,0 +1,3 @@
+[submodule "image-resizer"]
+	path = image-resizer
+	url = git@git.internetbrands.com:content/image-resizer.git

@@ -7,7 +7,7 @@ SET standard_conforming_strings = on;
 -- Create database
 --
 
-\c localdb
+\c webmgrdb
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -17,9 +17,16 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- TOC entry 8 (class 2615 OID 26258)
+-- Name: webmgr; Type: SCHEMA; Schema: -; Owner: postgres
+--
 
 CREATE SCHEMA octobercms;
+CREATE SCHEMA webmgr;
 
+-- CREATE USER postgres SUPERUSER;
+
+-- ALTER SCHEMA webmgr OWNER TO postgres;
 
 SET search_path = webmgr, pg_catalog;
 

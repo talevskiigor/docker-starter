@@ -91,12 +91,15 @@ RUN chown -R docker:$HOST_UID /run/php-fpm
 RUN curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /home/docker/.git-completion.bash
 
 
-COPY /entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-COPY /.bashrc /home/docker/.bashrc
+RUN git clone https://github.com/mubaris/motivate.git
+RUN mkdir -p /opt/motivate
+RUN cp -r /motivate/motivate/data /opt/motivate/
+RUN chmod -R 777 /opt/motivate/data
+RUN cp /motivate/motivate/motivate.py /opt/motivate/
+RUN ln -s /opt/motivate/motivate.py /usr/local/bin/motivate
 
 USER docker
 
 # ENTRYPOINT ["/bin/sh", "-c" , "/usr/local/bin/entrypoint.sh && source /home/docker/.bashrc && /usr/sbin/php-fpm && /usr/sbin/httpd -DFOREGROUND "]
-ENTRYPOINT ["/bin/sh", "-c" , "/usr/local/bin/entrypoint.sh && /usr/sbin/php-fpm && /usr/sbin/httpd -DFOREGROUND "]
+ENTRYPOINT ["/bin/sh", "-c" , "/usr/local/bin/entrypoint.sh && /usr/sbin/php-fpm && /usr/sbin/httpd -DFOREGROUND && cat /etc/motd "]
 

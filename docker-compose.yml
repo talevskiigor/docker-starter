@@ -1,26 +1,26 @@
 version: '3.9'
 services:
-  local-apache:
-    container_name: local-apache
-    hostname: local-apache
-    image: a87c81/local-apache:${PHP_VERSION}
-    
+  dev-apache:
+    container_name: dev-apache
+    hostname: dev-apache
+    image: internetbrands/dev-apache:${PHP_VERSION}
+
     tty: true
 
 
-  local-memcached:
+  dev-memcached:
     image: memcached:1.4.31-alpine
-    container_name: local-memcached
+    container_name: dev-memcached
 
 
-  local-postgresql:
+  dev-postgresql:
     image: postgres:14.4
-    container_name: local-postgresql
+    container_name: dev-postgresql
 
-  local-redis:
+  dev-redis:
     image: redis:bullseye
-    container_name: local-redis
+    container_name: dev-redis
 
-  local-mysql:
-    image: mysql:8.0.32
-    restart: always
+  dev-image-resizer:
+    container_name: dev-image-resizer
+    image: internetbrands/dev-image-resizer:latest

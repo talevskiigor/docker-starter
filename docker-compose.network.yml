@@ -1,46 +1,43 @@
 version: '3.9'
 services:
-  local-apache:
+  dev-apache:
     ports:
       - "80:80"
+      - "83:83"
       - "443:443"
     expose:
       - "9000"
       - "9003"
     networks:
-      local_net:
+      webmgr_net:
 
-  local-memcached:
+  dev-memcached:
     ports:
      - "11211:11211"
     networks:
-      local_net:
+      webmgr_net:
 
-  local-postgresql:
+  dev-postgresql:
     ports:
       - "5445:5432"
-
     networks:
-      local_net:
+      webmgr_net:
 
-  local-redis:
+  dev-redis:
     ports:
       - "6379:6379"
+    networks:
+      webmgr_net:
 
-    networks:
-      local_net:
-  
-  local-mysql:
+  dev-image-resizer:
     ports:
-      - '3306:3306'
-    expose:
-      - '3306'
+      - "8004:80"
     networks:
-      local_net:
+      webmgr_net:
 
 networks:
-  local_net:
+  webmgr_net:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.52.0/24
+        - subnet: 172.16.57.0/24

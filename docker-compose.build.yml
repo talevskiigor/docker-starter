@@ -1,11 +1,16 @@
 version: '3.9'
 services:
-  local-apache:
-    build: 
+  dev-apache:
+    build:
       dockerfile: Dockerfile
       context: ./apache
       args:
-        HOST_UID: ${USER_ID:-1000}
+        HOST_UID: ${USER_ID:-0}
         PHP_VERSION: ${PHP_VERSION}
-  
-  
+
+  dev-image-resizer:
+    build:
+      context: ./image-resizer/.docker
+      dockerfile: Dockerfile
+      args:
+        - IMAGE_MAGICK_VERSION=7.1.0-37
