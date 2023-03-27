@@ -1,6 +1,4 @@
-.vscode
-.idea
+.vscode/
+.idea/
 .env
 docker-compose-override.yml
-postgresql/data/
-/image-resizer

@@ -9,6 +9,9 @@ services:
       - ./apache/php.ini:/etc/php.ini
       - ./apache/www.conf:/etc/php-fpm.d/www.conf
       - ./apache/httpd.conf:/etc/httpd/conf/httpd.conf
+      - ./apache/sites-enabled/000-default.conf:/etc/httpd/conf.d/000-default.conf
+      - ./config/.env:/var/www/html/api/.env
+      - ./config/.env:/var/www/.env
       - ./www/logs:/var/log/httpd
       - ./www/html:/var/www/html
       - ./www/media:/var/media
@@ -16,16 +19,4 @@ services:
       # - ./apache/etc/apache2/conf/pagespeed_localhost_ssl.conf:/etc/httpd/conf.d/pagespeed_localhost_ssl.conf
       - ${SSH_AUTH_SOCK}:/ssh-agent
 
-  dev-postgresql:
-    volumes:
-      - ./postgresql/psql-entrypoint-scripts:/docker-entrypoint-initdb.d:rw
-      - webmgr_volume_db14:/var/lib/postgresql/data
-      - ./postgresql/data:/data
 
-  dev-image-resizer:
-    volumes:
-      - ./image-resizer:/var/www/sites/image-resizer
-      - ./www/media:/var/content/ib-images/smb/webmgr
-
-volumes:
-  webmgr_volume_db14:

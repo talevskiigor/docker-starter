@@ -4,7 +4,7 @@
 if [ -z ${PHP_VERSION+x} ]; then
     echo -e "\n Please select version for PHP"
     PS3='Please enter your choice: '
-    options=("PHP 8.2" "PHP 8.1" "PHP 8.0" "PHP 7.4" "EXIT")
+    options=("PHP 8.2" "PHP 8.1" "PHP 8.0" "PHP 7.4" "PHP 5.6" "EXIT")
     select opt in "${options[@]}"; do
         case $opt in
             "PHP 8.2")
@@ -22,6 +22,11 @@ if [ -z ${PHP_VERSION+x} ]; then
             
             "PHP 7.4")
                 PHP_VERSION="7.4"
+                break
+            ;;
+            
+            "PHP 5.6")
+                PHP_VERSION="5.6"
                 break
             ;;
             

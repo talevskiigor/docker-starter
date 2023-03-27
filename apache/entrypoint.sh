@@ -23,8 +23,6 @@ ssh-keyscan git.internetbrands.com >> ~/.ssh/known_hosts
 
 
 source ~/.bashrc
-## Change the prompt to show the active git branch and add some colors
-# export PS1="\[\033[33;1m\]\w\[\033[m\] (\[\033[30;1m\]\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[\033[m\]) \$  \n $"
 
 
 

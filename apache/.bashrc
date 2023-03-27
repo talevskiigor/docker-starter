@@ -29,7 +29,7 @@ export PS1="\[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 clear
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 [ ! -z "$TERM" -a -r /etc/motd ]  && cat /etc/motd
-cd /var/www/html/webmgr
+cd /var/www/html
 echo
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 motivate

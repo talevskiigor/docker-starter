@@ -11,33 +11,11 @@ services:
     networks:
       webmgr_net:
 
-  dev-memcached:
-    ports:
-     - "11211:11211"
-    networks:
-      webmgr_net:
 
-  dev-postgresql:
-    ports:
-      - "5445:5432"
-    networks:
-      webmgr_net:
-
-  dev-redis:
-    ports:
-      - "6379:6379"
-    networks:
-      webmgr_net:
-
-  dev-image-resizer:
-    ports:
-      - "8004:80"
-    networks:
-      webmgr_net:
 
 networks:
   webmgr_net:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.16.57.0/24
+        - subnet: 172.16.55.0/24
